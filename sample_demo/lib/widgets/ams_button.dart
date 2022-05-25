@@ -9,7 +9,7 @@ class AMSButton extends StatefulWidget {
   Color? buttonIconColor;
   double? buttonHeight;
   String? text;
-  ButtonWidth? buttonSize;
+  ButtonWidth? buttonWidth;
   bool? enableButton;
   bool? disableButton;
   late final VoidCallback? onPressed;
@@ -25,7 +25,7 @@ class AMSButton extends StatefulWidget {
       this.enableButton,
       this.disableButton,
       this.borderColor,
-      this.buttonSize,
+      this.buttonWidth,
       this.onPressed})
       : super(key: key);
 
@@ -33,26 +33,27 @@ class AMSButton extends StatefulWidget {
   State<StatefulWidget> createState() {
     return _AMSButtonState();
   }
-
 }
-class _AMSButtonState extends State<AMSButton> {
 
+class _AMSButtonState extends State<AMSButton> {
   void changeState() {
-    setState(() {
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: getButtonWidth(widget.buttonSize!),
+      width: getButtonWidth(widget.buttonWidth!),
       height: widget.buttonHeight,
       decoration: BoxDecoration(
         color: widget.buttonBackgroundColor,
         borderRadius: BorderRadius.circular(6),
       ),
       child: TextButton(
-        onPressed:() {
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(width: 1.0, color: widget.borderColor!),
+        ),
+        onPressed: () {
           changeState();
           widget.onPressed!();
         },
@@ -77,4 +78,3 @@ double getButtonWidth(ButtonWidth buttonWidth) {
 }
 
 enum ButtonWidth { small, big }
-
