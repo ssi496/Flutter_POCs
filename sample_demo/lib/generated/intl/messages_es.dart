@@ -22,7 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "email": MessageLookupByLibrary.simpleMessage("Correo electrónico"),
         "login": MessageLookupByLibrary.simpleMessage("Acceso"),
+        "password": MessageLookupByLibrary.simpleMessage("Clave"),
         "welcome": MessageLookupByLibrary.simpleMessage(
             "Bienvenido al sistema de gestión de citas")
       };

@@ -22,7 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "email": MessageLookupByLibrary.simpleMessage("மின்னஞ்சல்"),
         "login": MessageLookupByLibrary.simpleMessage("உள்நுழைய"),
+        "password": MessageLookupByLibrary.simpleMessage("கடவுச்சொல்"),
         "welcome": MessageLookupByLibrary.simpleMessage(
             "சந்திப்பு மேலாண்மை அமைப்புக்கு வரவேற்கிறோம்")
       };

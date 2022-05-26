@@ -1,4 +1,6 @@
 {
 "welcome" : "Bienvenido al sistema de gestión de citas",
-"login" : "Acceso"
+"login" : "Acceso",
+"email" : "Correo electrónico",
+"password" : "Clave"
 }

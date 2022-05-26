@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
       home: Scaffold(
         backgroundColor: const Color(0xff003D6D),
         appBar: AppBar(
-          title: const Text("Login"),
+          title: Text(S.of(context).login),
           backgroundColor: const Color(0xff003D6D),
           leading: IconButton(
             icon: const Icon(Icons.arrow_back),
@@ -55,24 +55,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   context.read<LanguageChangeProvider>().changeLocale("hi");
                 },
                 text: S.of(context).welcome),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
               child: TextField(
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Email',
+                    labelText: S.of(context).email,
                     hintText: 'Enter email'),
               ),
             ),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
               //padding: EdgeInsets.symmetric(horizontal: 15),
               child: TextField(
                 decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Password',
+                    labelText: S.of(context).password,
                     hintText: 'Enter password'),
               ),
             ),
