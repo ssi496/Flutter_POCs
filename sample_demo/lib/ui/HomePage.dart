@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:sample_demo/ui/DisplayPage.dart';
+import '../LanguageChangeProvider.dart';
+import '../generated/l10n.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _HomePage();
@@ -11,19 +17,33 @@ class HomePage extends StatefulWidget {
 class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "Home page",
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text("Home"),
-            backgroundColor: const Color(0xff003D6D),
-            leading: IconButton(
-                icon: const Icon(Icons.arrow_back),
-                color: Colors.white,
-                onPressed: () {}),
-          ),
-          body: getListView()),
+    return ChangeNotifierProvider<LanguageChangeProvider>(
+      create: (context) => LanguageChangeProvider(),
+      child: Builder(
+        builder: (context) => MaterialApp(
+          locale: Provider.of<LanguageChangeProvider>(context, listen: true)
+              .currentLocale,
+          localizationsDelegates: [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          title: "Home page",
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+              appBar: AppBar(
+                title: Text("Home"),
+                backgroundColor: const Color(0xff003D6D),
+                leading: IconButton(
+                    icon: const Icon(Icons.arrow_back),
+                    color: Colors.white,
+                    onPressed: () {}),
+              ),
+              body: getListView()),
+        ),
+      ),
     );
   }
 }
@@ -51,6 +71,11 @@ Widget getListView() {
 }
 
 List<String> getListElements() {
-  var items = ["Custom Big button", "Custom small button", "Drop down", "Login View"];
+  var items = [
+    "Custom Big button",
+    "Custom small button",
+    "Drop down",
+    "Login View"
+  ];
   return items;
 }
